@@ -1,0 +1,32 @@
+<div >
+<div class="navbar">
+  <a class="active"><i class="fa fa-fw fa-home"></i> Home</a>  
+  <a href="#"><i class="fa fa-fw fa-user"></i> {{ userDisplayName }}</a>
+</div>
+<div class="sidebar">
+  <a routerLink="owner" routerLinkActive="active" ariaCurrentWhenActive="page">Owners</a>
+  <a routerLink="device" routerLinkActive="active" ariaCurrentWhenActive="page">Devices</a>
+  <a href="#news">Reporting</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <div class="button">
+    <button type="submit" (click) = "logOut()" mat-button>Logout</button>
+  </div>
+</div>
+
+<div class="content">
+  <h2>Devices for owner</h2>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+  <a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-linkedin"></a>
+</div>
+
+</div>
+
+
+

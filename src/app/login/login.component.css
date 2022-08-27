@@ -1,0 +1,37 @@
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 50px 30px;
+  }
+  
+  .mat-card{
+    width : 50%;
+    background-color:lavender;
+  }
+
+  .mat-form-field {
+    width: 50%;
+    min-width: 300px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+    row-gap: 50px;
+    flex-grow: 1;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap-reverse;
+    flex-grow: 1;
+  }
