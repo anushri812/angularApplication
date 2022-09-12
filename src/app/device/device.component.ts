@@ -27,4 +27,5 @@ export class DeviceComponent implements OnInit {
   }
   displayedColumns: string[] = ['deviceId', 'name', 'specifications'];
   dataSource = ELEMENT_DATA;
+  
 }

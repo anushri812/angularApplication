@@ -1,14 +1,13 @@
-<h3>List of owners</h3>
+<h3 style="color: white;">List of owners</h3>
 <div class="mat-elevation-z8">
   <mat-form-field appearance="fill">
-    <mat-label>Filter</mat-label>
-    <input (keyup)="applyFilter(filter.value)" #filter matInput>
+    <mat-label style="color: white;">Search</mat-label>
+    <input style="color:white;" (keyup)="applyFilter(filter.value)" #filter matInput>
   </mat-form-field>
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+<table style="background-color:beige" mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
     <!-- Position Column -->
     <ng-container matColumnDef="ownerId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by ownerId"> ownerId </th>
@@ -31,7 +30,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[3, 10, 20]"
+  <mat-paginator style="background-color:beige" [pageSizeOptions]="[3, 10, 20]"
   showFirstLastButtons 
   aria-label="Select page of periodic elements">
 </mat-paginator>

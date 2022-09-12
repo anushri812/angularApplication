@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from '../app.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,16 +10,26 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  form!: FormGroup;
 
-  constructor(private authser : AuthService, private router:Router) { }
-
-  ngOnInit(): void {
+  constructor(private authser : AuthService, private router:Router,private appService : AppService
+    ,private route:ActivatedRoute,private fb: FormBuilder) { }
+  infoMessage = '';
+  ngOnInit() {
+      this.route.queryParams
+        .subscribe(params => {
+          if(params?.['registered'] !== undefined && params?.['registered'] === 'true') {
+              this.infoMessage = 'Registration Successful! Please Login!';
+          }
+        });
+        this.createForm();
   }
-  form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
-  
+  createForm() {
+    this.form = this.fb.group({
+       username: ['', Validators.required ],
+       password: ['', Validators.required ]
+    });
+  }
   isAuthorizedUser : boolean = false;
 
   submit() {
@@ -28,6 +39,7 @@ export class LoginComponent implements OnInit {
      this.isAuthorizedUser= this.authser.verifyUserCredentials(this.form.value.username,this.form.value.password);
      if(this.isAuthorizedUser)
      {
+      this.appService.blnDisplayMenu = false;
       sessionStorage.setItem('loggedInUser',this.form.value.username);
       this.router.navigate(['/home']);
      }
@@ -40,7 +52,6 @@ export class LoginComponent implements OnInit {
   registerUser() {
     this.router.navigate(['/register']);
   }
-
   @Input()
   error!: string | null;
 

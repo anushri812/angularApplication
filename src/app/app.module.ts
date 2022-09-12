@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { ReportComponent } from './report/report.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AuthService } from './auth.service';
     HomeComponent,
     OwnerComponent,
     RegisterComponent,
-    DeviceComponent
+    DeviceComponent,
+    ReportComponent,
+    ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

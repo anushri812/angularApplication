@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,16 +10,11 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authser : AuthService , private router : Router) { }
+  constructor(private authser : AuthService , private router : Router,private appService:AppService) { }
   userDisplayName!: string | null;
   ngOnInit(): void {
     this.userDisplayName = sessionStorage.getItem('loggedInUser');
     console.log(this.userDisplayName);
   }
-  
-  logOut() 
-  {
-    this.authser.isLoggedIn = false;
-    this.router.navigate(['/login']);
-  }
+
 }
